@@ -1,29 +1,30 @@
-const fs = require('fs');
+import { writeFileSync, readFileSync } from 'fs';
 
-console.log('crud node fs');
+console.log(`node-fs-crud`);
+
+const postsJson = readFileSync('./db.json', { encoding: 'utf-8' });
 
 const crud = {
-  posts: [],
+  posts: JSON.parse(postsJson),
   create({ id, content }) {
     const post = { id, content };
     crud.posts.push(post);
-    fs.writeFileSync('./db.json', JSON.stringify(crud.posts), {
+    writeFileSync('./db.json', JSON.stringify(crud.posts), {
       encoding: 'utf-8',
     });
   },
   read() {
-    crud.posts = fs.readFileSync('./db.json', { encoding: 'utf-8' });
+    crud.posts = readFileSync('./db.json', { encoding: 'utf-8' });
     return crud.posts;
   },
+  update() {},
 };
 
 // Create
-crud.create({ id: 1, content: 'hello people' });
-crud.create({ id: 2, content: 'hi guys' });
-crud.create({ id: 3, content: 'hi everyone' });
+crud.create({ id: 6, content: 'good dawn 44' });
 
 // Read
-console.log(`reading files: ${crud.read()}`);
+console.log(`read()::: ${crud.read()}`);
 
 // Update
 

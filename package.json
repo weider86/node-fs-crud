@@ -4,6 +4,7 @@
   "description": "A node filesystem CRUD project",
   "author": "Weider Lima <weider86@gmail.com>",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
