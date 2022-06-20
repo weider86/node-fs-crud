@@ -1,0 +1,21 @@
+{
+  "name": "fs-crud",
+  "version": "1.0.0",
+  "description": "A node filesystem CRUD project",
+  "author": "Weider Lima <weider86@gmail.com>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weider86/node-fs-crud.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/weider86/node-fs-crud/issues"
+  },
+  "homepage": "https://github.com/weider86/node-fs-crud#readme"
+}
