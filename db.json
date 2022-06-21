@@ -1,8 +1,10 @@
 [
+  { "id": 1, "content": "hello people!" },
   { "id": 2, "content": "hi guys!!" },
   { "id": 3, "content": "hi everyone!" },
   { "id": 4, "content": "good morning" },
   { "id": 5, "content": "good night" },
+  { "id": 6, "content": "hello thiaguera!!" },
   { "id": 7, "content": "good afternoon" },
-  { "id": 1, "content": "hello people!" }
+  { "id": 8, "content": "hi bedidos!" }
 ]

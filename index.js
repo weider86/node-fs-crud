@@ -7,17 +7,20 @@ const crud = {
   create({ id, content }) {
     const post = { id, content };
 
-    crud.posts.map((item) =>
-      item.id === post.id
-        ? console.log('Erron on creating post: id already exusts.')
-        : false
-    );
+    if (crud.posts.find((item) => item.id === post.id)) {
+      console.log('Erron on creating post: id already exists.');
+      return;
+    }
 
     crud.posts.push(post);
 
-    writeFileSync('./db.json', JSON.stringify(crud.posts), {
-      encoding: 'utf-8',
-    });
+    writeFileSync(
+      './db.json',
+      JSON.stringify(crud.posts.sort((a, b) => a.id - b.id)),
+      {
+        encoding: 'utf-8',
+      }
+    );
   },
   read() {
     crud.posts = readFileSync('./db.json', { encoding: 'utf-8' });
@@ -26,13 +29,15 @@ const crud = {
   update({ id, content }) {
     const post = { id, content };
 
-    crud.posts.find((item) =>
+    const newItem = crud.posts.find((item) =>
       item.id === post.id
         ? (item.content = post.content)
-        : console.log('Erron on updating post: id does not exusts.')
+        : console.log('Erron on updating post: id does not exists.')
     );
 
-    writeFileSync('./db.json', JSON.stringify(crud.posts), {
+    const newArr = [...crud.posts.filter((i) => i.id !== post.id), newItem];
+
+    writeFileSync('./db.json', JSON.stringify(newArr), {
       encoding: 'utf-8',
     });
   },
@@ -50,16 +55,16 @@ const crud = {
 };
 
 // Create
-// crud.create({ id: 1, content: 'hello people!' });
+crud.create({ id: 8, content: 'hi bedidos!' });
 
 // Update
 // crud.update({
-//   id: 3,
-//   content: `${crud.posts.find((i) => i.id === 3).content}!`,
+//   id: 6,
+//   content: `hello thiaguera!!`,
 // });
 
 // Delete
-crud.delete({ id: 6 });
+// crud.delete({ id: 1 });
 
 // Read
 console.log(JSON.parse(crud.read()));
