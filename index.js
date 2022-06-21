@@ -2,12 +2,11 @@ import { writeFileSync, readFileSync } from 'fs';
 
 console.log(`node-fs-crud`);
 
-const postsJson = readFileSync('./db.json', { encoding: 'utf-8' });
-
 const crud = {
-  posts: JSON.parse(postsJson),
+  posts: JSON.parse(readFileSync('./db.json', { encoding: 'utf-8' })),
   create({ id, content }) {
     const post = { id, content };
+
     crud.posts.map((item) =>
       item.id === post.id
         ? console.log('Erron on creating post: id already exusts.')
@@ -54,10 +53,13 @@ const crud = {
 // crud.create({ id: 1, content: 'hello people!' });
 
 // Update
-// crud.update({ id: 2, content: 'hi guys!' });
+// crud.update({
+//   id: 3,
+//   content: `${crud.posts.find((i) => i.id === 3).content}!`,
+// });
 
 // Delete
-// crud.delete({ id: 8 });
+crud.delete({ id: 6 });
 
 // Read
 console.log(JSON.parse(crud.read()));
